@@ -59,7 +59,7 @@ SendChatMessage(am, "CHANNEL",nil,id);
 elseif (channame == "10") then
 id = GetChannelName(channame);
 SendChatMessage(am, "CHANNEL",nil,id);
-elseif (channame == "em") then
+elseif (channame == "de") then
 DoEmote(am);
 elseif (channame == "rs") then
 RunScript(am);
@@ -109,7 +109,7 @@ sendhelpmsg("'/autotick <time>' - Sets the time delay between messages.");
 sendhelpmsg("'/autochan <channel name>' - Sets the channel to send messages to.");
 sendhelpmsg("'/automsg' - Sets the message to use.");
 sendhelpmsg("'/autochar <character name>' - Sets the character to wisper messages to.");
-sendhelpmsg("Accepted channels are: w, rs, em, s, y, e, p, r, rw, g, o, bg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10");
+sendhelpmsg("Accepted channels are: w, rs, de, s, y, e, p, r, rw, g, o, bg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10");
 
 
 end
