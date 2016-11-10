@@ -5,7 +5,7 @@ Allows automatic sending of a message to a channel at an interval specified by a
 [StewartA](https://wow.curseforge.com/addons/project-3158/)
 
 # Showcase
-![](http://imagehost.spark-media.ru/i4/352C8EFB-00D3-AB48-2D04-91C6769AD518.png)
+![](http://imagehost.spark-media.ru/i4/F457F481-CBC1-90DF-ED80-DF8661E1FFE6.png)
 
 # Changelog   		
 * Changed many discriptions etc
