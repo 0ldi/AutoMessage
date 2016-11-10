@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: Channel automessenger
+## Notes: Please Don't Spam!
+## Author: The BOFH (Stewarta of Nordrassil)
+## SavedVariables:ticktime, channame, am
+AutoMessage.xml

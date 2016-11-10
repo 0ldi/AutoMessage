@@ -1,0 +1,298 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+
+	<Script file="AutoMessage.lua"/>
+	<Frame name="stew" frameStrata="ARTWORK" enableMouse="false" parent="UIParent">
+		<Size>
+			<AbsDimension x="0" y="0"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				am="Message goes here";
+				channame="say";
+				ticktime=10;
+				initproc();
+			</OnLoad>
+			<OnUpdate>
+				timerproc(arg);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+<Frame name="autoMessageCFGFrame" frameStrata="HIGH" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+	<Size>
+		<RelDimension x="0.3" y="0.3"/>
+	</Size>
+
+	<Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+  <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<EdgeSize>
+		<AbsValue val="16"/>
+	</EdgeSize>
+	<TileSize>
+		<AbsValue val="32"/>
+	</TileSize>
+	<BackgroundInsets>
+		<AbsInset left="5" right="5" top="5" bottom="5"/>
+	</BackgroundInsets>
+  </Backdrop>
+<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="AutoMessage Configuration">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-18"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Message:">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Message interval:">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-110"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Channel:">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-160"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Interval: The time between messages, in seconds.">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="25" y="100"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Channels: say, yell, party, guild, officer, raid">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="25" y="85"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="or a custom channel.">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="40" y="70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>				
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Type /autohelp for a list of chat commands.">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="25" y="50"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+
+</Layers>
+<Frames>
+
+<Button name="$parentButtonClose" inherits="OptionsButtonTemplate" text="Close">
+	<Anchors>
+		<Anchor point="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="-12" y="16"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> HideUIPanel(autoMessageCFGFrame);</OnClick>
+	</Scripts>
+</Button>
+<Button name="$parentButtonstop" inherits="OptionsButtonTemplate" text="Stop">
+	<Anchors>
+		<Anchor point="BOTTOM">
+			<Offset>
+				<AbsDimension x="0" y="16"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();stopit=1;</OnClick>
+	</Scripts>
+</Button>
+<Button name="$parentButtonstart" inherits="OptionsButtonTemplate" text="Start">
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="12" y="16"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();stopit=0;runtick=GetTime();</OnClick>
+	</Scripts>
+</Button>
+
+
+<EditBox name="$parentEditBox1" letters="255">
+	<Size>
+		<AbsDimension x="200" y="32"></AbsDimension>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-20" y="-50"></AbsDimension>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="-20" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnLoad></OnLoad>
+	</Scripts>
+	<FontString inherits="ChatFontNormal"></FontString>
+</EditBox>
+<EditBox name="$parentEditBox2" letters="255">
+	<Size>
+		<AbsDimension x="200" y="32"></AbsDimension>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-20" y="-100"></AbsDimension>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="-20" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnLoad></OnLoad>
+	</Scripts>
+	<FontString inherits="ChatFontNormal"></FontString>
+</EditBox>
+<EditBox name="$parentEditBox3" letters="255">
+	<Size>
+		<AbsDimension x="200" y="32"></AbsDimension>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-20" y="-150"></AbsDimension>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="-20" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnLoad></OnLoad>
+	</Scripts>
+	<FontString inherits="ChatFontNormal"></FontString>
+</EditBox>
+</Frames>
+</Frame>
+
+</Ui>
