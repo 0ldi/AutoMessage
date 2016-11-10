@@ -10,6 +10,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			<OnLoad>
 				am="Message goes here";
 				channame="say";
+				charname="Trump";
 				ticktime=10;
 				initproc();
 			</OnLoad>
@@ -57,7 +58,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="Message interval:">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Interval:">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -75,6 +76,15 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						</Anchor>
 					</Anchors>
 				</FontString>
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Wisper to:">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-210"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>				
 				<FontString name="$parentTitle" inherits="GameFontNormal" text="Interval: The time between messages, in seconds.">
 					<Anchors>
 						<Anchor point="BOTTOMLEFT">
@@ -84,7 +94,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="Channels: say, yell, party, guild, officer, raid">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="Channels: w, rs, em, s, y, e, p, r, rw, g, o, bg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10">
 					<Anchors>
 						<Anchor point="BOTTOMLEFT">
 							<Offset>
@@ -93,11 +103,11 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="or a custom channel.">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="w (Wisper to), rs(RunScript), em (EMotes), 1-10 (Custom Channels).">
 					<Anchors>
 						<Anchor point="BOTTOMLEFT">
 							<Offset>
-								<AbsDimension x="40" y="70"/>
+								<AbsDimension x="25" y="70"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -116,7 +126,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 </Layers>
 <Frames>
 
-<Button name="$parentButtonClose" inherits="OptionsButtonTemplate" text="Close">
+<Button name="$parentButtonClose" inherits="OptionsButtonTemplate" text="Hide">
 	<Anchors>
 		<Anchor point="BOTTOMRIGHT">
 			<Offset>
@@ -137,7 +147,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();stopit=1;</OnClick>
+		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();charname=autoMessageCFGFrameEditBox4:GetText();stopit=1;</OnClick>
 	</Scripts>
 </Button>
 <Button name="$parentButtonstart" inherits="OptionsButtonTemplate" text="Start">
@@ -149,7 +159,7 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();stopit=0;runtick=GetTime();</OnClick>
+		<OnClick> am=autoMessageCFGFrameEditBox1:GetText();ticktime=autoMessageCFGFrameEditBox2:GetText();channame=autoMessageCFGFrameEditBox3:GetText();charname=autoMessageCFGFrameEditBox4:GetText();stopit=0;runtick=GetTime();</OnClick>
 	</Scripts>
 </Button>
 
@@ -254,6 +264,52 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 		<Anchor point="TOPRIGHT">
 			<Offset>
 				<AbsDimension x="-20" y="-150"></AbsDimension>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="-20" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+			<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+				<Size>
+					<AbsDimension x="120" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Scripts>
+		<OnLoad></OnLoad>
+	</Scripts>
+	<FontString inherits="ChatFontNormal"></FontString>
+</EditBox>
+<EditBox name="$parentEditBox4" letters="255">
+	<Size>
+		<AbsDimension x="200" y="32"></AbsDimension>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPRIGHT">
+			<Offset>
+				<AbsDimension x="-20" y="-200"></AbsDimension>
 			</Offset>
 		</Anchor>
 	</Anchors>

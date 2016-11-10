@@ -9,23 +9,60 @@ function timerproc(a)
 if(stopit~=nil) then
 if(stopit==0) then
 if(runtick <= GetTime()) then
-if (channame == "guild") then
+if (channame == "g") then
 SendChatMessage(am, "GUILD");
-elseif (channame == "say") then
+elseif (channame == "s") then
 SendChatMessage(am, "SAY");
-elseif (channame == "yell") then
+elseif (channame == "y") then
 SendChatMessage(am == "YELL");
-elseif (channame == "party") then
+elseif (channame == "p") then
 SendChatMessage(am, "PARTY");
-elseif (channame == "raid") then
+elseif (channame == "r") then
 SendChatMessage(am, "RAID");
-elseif (channame == "officer") then
+elseif (channame == "o") then
 SendChatMessage(am, "OFFICER");
-elseif (channame ~= nil) then
+elseif (channame == "e") then
+SendChatMessage(am, "EMOTE");
+elseif (channame == "rw") then
+SendChatMessage(am, "RAID_WARNING");
+elseif (channame == "bg") then
+SendChatMessage(am, "BATTLEGROUND");
+elseif (channame == "w") then
+SendChatMessage(am, "WHISPER",nil,charname);
+elseif (channame == "1") then
 id = GetChannelName(channame);
-JoinChannelByName(channame);
-ChatFrame_AddChannel(DEFAULT_CHAT_FRAME,channame)
-SendChatMessage(am, "CHANNEL","Common",id);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "2") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "3") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "4") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "5") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "6") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "7") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "8") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "9") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "10") then
+id = GetChannelName(channame);
+SendChatMessage(am, "CHANNEL",nil,id);
+elseif (channame == "em") then
+DoEmote(am);
+elseif (channame == "rs") then
+RunScript(am);
 end	
 runtick=GetTime()+ticktime
 end
@@ -71,7 +108,8 @@ sendhelpmsg("'/autostop' - Stops the Automessenger.");
 sendhelpmsg("'/autotick <time>' - Sets the time delay between messages.");
 sendhelpmsg("'/autochan <channel name>' - Sets the channel to send messages to.");
 sendhelpmsg("'/automsg' - Sets the message to use.");
-sendhelpmsg("Accepted channels are: guild, party, raid, say, yell, <custom channel>");
+sendhelpmsg("'/autochar <character name>' - Sets the character to wisper messages to.");
+sendhelpmsg("Accepted channels are: w, rs, em, s, y, e, p, r, rw, g, o, bg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10");
 
 
 end
@@ -114,6 +152,7 @@ func=function(msg)
 channame=msg;
 end
 stewRegisterCommand(id,comlist,desc,func);
+
 id="stew3";
 comlist={"/automsg"}
 desc="Sets the automessage"
@@ -121,6 +160,7 @@ func=function(msg)
 am=msg
 end
 stewRegisterCommand(id,comlist,desc,func);
+
 id="stew4";
 comlist={"/auto"}
 desc="Shows the automessager configuration window"
@@ -128,8 +168,17 @@ func=function(msg)
 autoMessageCFGFrameEditBox1:SetText(am);
 autoMessageCFGFrameEditBox2:SetText(ticktime);
 autoMessageCFGFrameEditBox3:SetText(channame);
+autoMessageCFGFrameEditBox4:SetText(charname);
 ShowUIPanel(autoMessageCFGFrame);
 autoMessageCFGFrameEditBox1:HighlightText();
+end
+stewRegisterCommand(id,comlist,desc,func);
+
+id="stew5";
+comlist={"/autochar"}
+desc="Sets the character to automessage"
+func=function(msg)
+charname=msg;
 end
 stewRegisterCommand(id,comlist,desc,func);
 

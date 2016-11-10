@@ -2,5 +2,5 @@
 ## Title: Channel automessenger
 ## Notes: Please Don't Spam!
 ## Author: The BOFH (Stewarta of Nordrassil)
-## SavedVariables:ticktime, channame, am
+## SavedVariables:ticktime, channame, am, charname
 AutoMessage.xml
