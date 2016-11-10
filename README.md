@@ -10,7 +10,7 @@ Allows automatic sending of a message to a channel at an interval specified by a
 # Changelog   		
 * Changed many discriptions etc
 * Added editbox for wisper name	
-* Added /Emote, /Battleground, /RaidWarning, /1-10, /Wisper, /RunScript channels			
+* Added /Emote, /Battleground, /RaidWarning, /1-10, /Wisper, DoEmote, /RunScript channels			
 
 Based on `AutoMessage 1.1`
 
