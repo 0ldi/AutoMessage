@@ -41,5 +41,15 @@ Wisper to:
 
 Message:    
 * For the text that you want to repeat   
-* For `em` type without "/" e.g. `dance`
+* For `de` type without "/" e.g. `dance`
 * For `rs` type any unprotected function e.g. `FollowUnit("target")`
+
+Commands:     
+* `/auto` - Opens the Automessenger configuration window");
+* `/autostart` - Starts the Automessenger.");
+* `/autostop` - Stops the Automessenger.");
+* `/autotick <time>` - Sets the time delay between messages.");
+* `/autochan <channel name>` - Sets the channel to send messages to.");
+* `/automsg <message>` - Sets the message to use.");
+* `/autochar <character name>` - Sets the character to wisper messages to.");
+
